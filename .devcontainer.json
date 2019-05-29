@@ -1,6 +1,6 @@
 // See https://aka.ms/vscode-remote/devcontainer.json for format details.
 {
-    "name": "Tox dev",
+    "name": "Tox remote docker dev env",
     "dockerComposeFile": "docker-compose.yml",
     "service": "dev",
     "workspaceFolder": "/workspace",
@@ -16,5 +16,5 @@
     // "appPort": [],
 
     // Create development environment and add flake8,black inside (not installed by default)
-    "postCreateCommand": "tox --workdir ~/.tox -e dev -v; ~/.tox/dev/bin/python -m pip install flake8 black"
+    "postCreateCommand": "~/create_dev_env"
 }

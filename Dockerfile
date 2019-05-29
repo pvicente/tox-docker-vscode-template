@@ -39,6 +39,15 @@ RUN apt-get update && \
 # Upgrade pip and install tox
 RUN python3.7 -m pip install --upgrade pip && python3.7 -m pip install tox
 
+RUN echo "\
+#!/bin/bash\n\
+set -e\n\
+tox --workdir ~/.tox -e dev -v\n\
+~/.tox/dev/bin/python -m pip install flake8 black\n\
+" >> ~/create_dev_env
+
+RUN chmod +x ~/create_dev_env
+
 # For some reason terminal opened inside vscode is settings LANG='en_US.UTF8' and some tests
 # are failing because of http://bugs.python.org/issue19846
 # Set tox workdir ~/.tox by default to don't pollute the source code, keeps venvs inside container
@@ -46,5 +55,6 @@ RUN python3.7 -m pip install --upgrade pip && python3.7 -m pip install tox
 RUN echo "\
 export LANG='C.UTF-8'\n\
 alias tox='tox --workdir ~/.tox'\n\
+alias create_dev_env='~/create_dev_env'\n\
 alias workon_dev='. ~/.tox/dev/bin/activate'\n\
 " >> ~/.bashrc
