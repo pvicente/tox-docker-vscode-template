@@ -1,0 +1,20 @@
+version: "3"
+services:
+  dev:
+    build:
+      context: .
+      # Location is relative to folder containing this compose file
+      dockerfile: Dockerfile
+    volumes:
+      # Mount configuration settings for vscode
+      - ./settings.vscode.json:/root/.vscode-server-insiders/data/Machine/settings.json
+
+      # This lets you avoid setting up Git again in the container
+      - ~/.gitconfig:/root/.gitconfig
+
+      # Mounts the tox project folder to '/workspace'. We'll then reference this as the
+      # workspaceFolder in '.devcontainer.json' so VS Code starts here.
+      - ${TOXPROJECTDIR}:/workspace
+
+    # Overrides default command so things don't shut down after the process ends.
+    command: sleep infinity

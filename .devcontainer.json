@@ -1,0 +1,20 @@
+// See https://aka.ms/vscode-remote/devcontainer.json for format details.
+{
+    "name": "Tox dev",
+    "dockerComposeFile": "docker-compose.yml",
+    "service": "dev",
+    "workspaceFolder": "/workspace",
+    "extensions": [
+        "ms-python.python",
+        "eamodio.gitlens",
+        "bungcip.better-toml",
+        "ryanluker.vscode-coverage-gutters",
+        "mutantdino.resourcemonitor",
+    ],
+
+    // Uncomment the next line if you want to publish any ports.
+    // "appPort": [],
+
+    // Create development environment and add flake8,black inside (not installed by default)
+    "postCreateCommand": "tox --workdir ~/.tox -e dev -v; ~/.tox/dev/bin/python -m pip install flake8 black"
+}
