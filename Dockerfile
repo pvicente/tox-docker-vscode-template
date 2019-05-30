@@ -36,13 +36,10 @@ RUN apt-get update && \
     apt-get clean -y && \
     rm -rf /var/lib/apt/lists/*
 
-# Upgrade pip and install tox
-RUN python3.7 -m pip install --upgrade pip && python3.7 -m pip install tox
-
-ARG username=tox
-ARG userhome=/home/${username}
-RUN useradd -d ${userhome} -s ${SHELL} -m ${username}
-ENV HOME ${userhome}
+# Create devuser to run everything as normal user. ARG uid passed as build time
+ARG uid=1000
+RUN useradd -u${uid} -s${SHELL} -m devuser
+ENV HOME /home/devuser
 
 # [Optional] Add sudo support
 RUN apt-get update && \
@@ -50,21 +47,18 @@ RUN apt-get update && \
     apt-get --purge autoremove -y && \
     apt-get clean -y && \
     rm -rf /var/lib/apt/lists/* && \
-    echo ${username} ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/${username} && \
-    chmod 0440 /etc/sudoers.d/${username} && \
-    cat /etc/passwd && ls -la /home && ls -la ${HOME}
+    echo devuser ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/devuser && \
+    chmod 0440 /etc/sudoers.d/devuser && \
+    getent passwd devuser
+
+# Upgrade pip and install tox
+RUN python3.7 -m pip install --upgrade pip && python3.7 -m pip install tox
+
+COPY create_dev_env.bash /usr/local/bin/create_dev_env.bash
+RUN chmod +x /usr/local/bin/create_dev_env.bash
 
 # Set the default user
-USER ${username}
-
-RUN echo "\
-#!/bin/bash\n\
-set -e\n\
-tox --workdir ~/.tox -e dev -v\n\
-~/.tox/dev/bin/python -m pip install flake8 black\n\
-" >> ~/create_dev_env
-
-RUN chmod +x ~/create_dev_env
+USER devuser
 
 # For some reason terminal opened inside vscode is settings LANG='en_US.UTF8' and some tests
 # are failing because of http://bugs.python.org/issue19846
@@ -73,6 +67,6 @@ RUN chmod +x ~/create_dev_env
 RUN echo "\
 export LANG='C.UTF-8'\n\
 alias tox='tox --workdir ~/.tox'\n\
-alias create_dev_env='~/create_dev_env'\n\
+alias create_dev_env='create_dev_env.bash'\n\
 alias workon_dev='. ~/.tox/dev/bin/activate'\n\
 " >> ~/.bashrc

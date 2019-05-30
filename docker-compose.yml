@@ -2,20 +2,20 @@ version: "3"
 services:
   dev:
     env_file: .env
-    user: ${USER_NAME}
+    user: devuser
     build:
       args:
-        - username=${USER_NAME}
-        - userhome=${USER_HOME}
+         # Check .env if running in Linux and you have permissions problems in mounted volumes
+        - uid=${UID:-9001}
       context: .
       # Location is relative to folder containing this compose file
       dockerfile: Dockerfile
     volumes:
       # This lets you avoid setting up Git again in the container
-      - ~/.gitconfig:${USER_HOME}/.gitconfig
+      - ~/.gitconfig:/home/devuser/.gitconfig
 
       # Mount configuration settings to configure vscode-remote
-      - ./settings.vscode.json:${USER_HOME}/.vscode-remote/data/Machine/settings.json
+      - ./settings.vscode.json:/home/devuser/.vscode-remote/data/Machine/settings.json
 
       # Mounts the tox project folder to '/workspace'. We'll then reference this as the
       # workspaceFolder in '.devcontainer.json' so VS Code starts here.

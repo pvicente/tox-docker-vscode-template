@@ -15,6 +15,6 @@
     // Uncomment the next line if you want to publish any ports.
     // "appPort": [],
 
-    // Create development environment and add flake8,black inside (not installed by default)
-    "postCreateCommand": "~/create_dev_env"
+    // Create development environment first time that container is running
+    "postCreateCommand": "create_dev_env.bash"
 }
