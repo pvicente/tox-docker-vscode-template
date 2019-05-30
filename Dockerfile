@@ -39,6 +39,24 @@ RUN apt-get update && \
 # Upgrade pip and install tox
 RUN python3.7 -m pip install --upgrade pip && python3.7 -m pip install tox
 
+ARG username=tox
+ARG userhome=/home/${username}
+RUN useradd -d ${userhome} -s ${SHELL} -m ${username}
+ENV HOME ${userhome}
+
+# [Optional] Add sudo support
+RUN apt-get update && \
+    apt-get install -y sudo && \
+    apt-get --purge autoremove -y && \
+    apt-get clean -y && \
+    rm -rf /var/lib/apt/lists/* && \
+    echo ${username} ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/${username} && \
+    chmod 0440 /etc/sudoers.d/${username} && \
+    cat /etc/passwd && ls -la /home && ls -la ${HOME}
+
+# Set the default user
+USER ${username}
+
 RUN echo "\
 #!/bin/bash\n\
 set -e\n\
