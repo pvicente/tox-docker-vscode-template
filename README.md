@@ -1,4 +1,4 @@
-# Work in a dev env inside a docker container with VSCode.
+# Template for developing inside a docker container with VSCode and a tox project
 
 With the new [**remote development feature for VSCode**](https://code.visualstudio.com/blogs/2019/05/02/remote-development) you can create and spin up a complete development environment in a matter of seconds and start coding without any other setup in your machine. See info about [**developing inside a container**](https://code.visualstudio.com/docs/remote/containers).
 
