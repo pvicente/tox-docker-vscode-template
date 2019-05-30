@@ -6,7 +6,7 @@ If your IDE for python project is **VSCode** and it's based on tox this template
 
 It setups a development container (based on **Ubuntu 18.04**) with the essential tools to run vscode inside and run **CI environments inside**. A development environment is set up to work in **VSCode** to run/debug your code and tests. You can also run other CI environments and use them inside VSCode.
 
-This setup works perfectly with [tox project living on the same parent folder](https://github.com/tox-dev/tox) and it can be used as an template for other projects which are using **tox for CI** or to create a the **development environment**.
+This setup works perfectly with [tox project living on the same parent folder](https://github.com/tox-dev/tox) and it can be used as an template for other projects which are using **tox for CI** or to create a **development environment**.
 
 ## Use cases:
 
