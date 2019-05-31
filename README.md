@@ -18,7 +18,7 @@ This setup works with [tox](https://github.com/tox-dev/tox) project as an exampl
 
 - Your tox based project (*i.e [tox](https://github.com/tox-dev/tox)*) cloned in parent folder of this repo (**../tox** by default).
 - [Docker](https://docs.docker.com/install/#supported-platforms)
-- [Visual Studio Code Insiders v1.34.0](https://code.visualstudio.com/insiders/)
+- [Visual Studio Code Insiders >= v1.34.0](https://code.visualstudio.com/insiders/) until **Remote Development Extension for VSCode** is considered stable, then install normal [Visual Studio Code](https://code.visualstudio.com/)
 - [Remote Development Extension for VScode](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack)
 
 After the extension is installed press F1 (Command Palette) ">Reload Window", VScode will prompt a message "Reopen Folder in Container" and it will build and set up the container in a matter of seconds. For more information see [remote container extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
