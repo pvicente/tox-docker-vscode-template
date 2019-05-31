@@ -2,16 +2,16 @@
 
 With the new [**remote development feature for VSCode**](https://code.visualstudio.com/blogs/2019/05/02/remote-development) you can create and spin up a complete development environment in a matter of seconds and start coding without any other setup in your machine. See info about [**developing inside a container**](https://code.visualstudio.com/docs/remote/containers).
 
-If your IDE for python project is **VSCode** and it's based on tox this template project could be the base to get up and running a development environment for your project in a matter of seconds.
+If your IDE for python project is **VSCode** and your project is using tox this template project could help you to get a development environment ready for coding in a few seconds.
 
-It setups a development container (based on **Ubuntu 18.04**) with the essential tools to run vscode inside and run **CI environments inside**. A development environment is set up to work in **VSCode** to run/debug your code and tests. You can also run other CI environments and use them inside VSCode.
+It setups a development container (based on **Ubuntu 18.04**) with the essential tools to run your **CI environments** inside the container with **VSCode**. A development environment is set up to work in **VSCode** to run/debug your code and tests. You can also run other CI environments and use them inside VSCode.
 
-This setup works perfectly with [tox project living on the same parent folder](https://github.com/tox-dev/tox) and it can be used as an template for other projects which are using **tox for CI** or to create a **development environment**.
+This setup works with [tox](https://github.com/tox-dev/tox) project cloned in the parent folder (**../tox** relative to this project) but it can be a template for any project using **tox for CI** or to create a **development environment**.
 
 ## Use cases:
 
-- If your host machine is **MacOSX/Windows** but needs to develop a feature for **Linux**.
-- If you need to investigate a problem in **Linux CI** and you need a specific version of python to debug it and you don't want to install in your host machine.
+- If your host machine is **MacOSX/Windows** but you needs to develop a feature for **Linux** and you don't have it up and running.
+- If you need to investigate a problem in **Linux CI** and you need a specific version of python to debug it and you don't want to install it in your host machine.
 - A standarised development environment for your team based on **VSCode** and **tox**.
 
 ## Requirements:
@@ -39,7 +39,8 @@ See [devcontainer json file](https://code.visualstudio.com/docs/remote/container
 
 ## Actions you can do for now
 
-- Run all CI environments available in tox in the vscode terminal (Note: pypy is skipped at the moment some tests are failing and I haven't seen that CI is running them).
+- Run all CI environments available in tox in the vscode terminal.
+  >Note: pypy is skipped at the moment not tested in CI for tox project.
 
 - Run/Debug tests inside VS Code with any python virtual environment created by tox. By default **dev** environment is enabled, but you can choose **py27, py36, docs ...** if you've created them in the terminal.
   >Note: if you don't see them after create >Reload Window and they should be available at the bottom of your screen.
@@ -52,9 +53,9 @@ See [devcontainer json file](https://code.visualstudio.com/docs/remote/container
 
 ## Notes
 
-- Your tox project is mounted at **/workspace** inside the container. By default is using **../tox** in your host machine, but it can be changed with [.env file](/.env) through **TOX_PROJECT_DIR**
+- Your tox project is mounted at **/workspace** inside the container. By default is using **../tox** in your host machine. Path can be changed with [.env file](/.env) through **TOX_PROJECT_DIR**
 
--  If your host machine is **Linux** you'll probably hit some permissions problems with your workspace. See [.env file](/.env) and set UID with the id of your host user.
+- If your host machine is **Linux** you'll probably hit some permissions problems with your workspace. See [.env file](/.env) and set UID with the id of your host user.
 
 - Tox environments are generated inside the container **~/.tox** so they are installed and running faster not polluting the **.tox** folder in your workspace.
 
