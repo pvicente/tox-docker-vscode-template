@@ -53,11 +53,11 @@ See [devcontainer json file](https://code.visualstudio.com/docs/remote/container
 
 ## Notes
 
-- Your tox project is mounted at **/workspace** inside the container. By default is using **../tox** in your host machine. Path can be changed with **TOX_PROJECT_DIR** decalred in [.env file](/.env). 
+- Your tox project is mounted at **/workspace** inside the container. By default is using **../tox** in your host machine. Path can be changed with **TOX_PROJECT_DIR** decalred in [.env file](/.env) and *>Remote-Container: Reload Window*
 
 - If your host machine is **Linux** you'll probably hit some permissions problems with your workspace. See [.env file](/.env) and set UID with your user's id (**id -u**) in your host machine and *>Remote-Containers: Rebuild Container* 
 
-- Tox environments are generated inside the container **--workdir ~/.tox**. In this way your **/workspace** won't be polluted with a **.tox** folder inside.
+- Tox environments are generated inside the container **--workdir ~/.tox**. In this way your **/workspace** won't be polluted with a **.tox** folder inside. See **tox alias** created in [Dockerfile](/Dockerfile)
 
 - Run **pytest in parallel inside VSCode** (**disabled by default**) is not compatible with debugging. If you want to enable it see commented [settings.vscode.json](/settings.vscode.json) and after changes *>Remote-Containers: Rebuild Container*
 
