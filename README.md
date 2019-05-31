@@ -10,8 +10,7 @@ This setup works with [tox](https://github.com/tox-dev/tox) project as an exampl
 
 ## Use cases:
 
-- If your host machine is **MacOSX/Windows** but you needs to develop a feature for **Linux** and you don't have it up and running.
-- If you need to investigate a problem in **Linux CI** and you need a specific version of python to debug it and you don't want to install it in your host machine.
+- If your host machine is **MacOSX/Windows** but you need access to a **Linux** development environment already configured with **VSCode** and **development tools**.
 - A standarised development environment for your team based on **VSCode** and **tox**.
 
 ## Requirements:
