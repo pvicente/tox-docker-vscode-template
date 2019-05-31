@@ -49,17 +49,17 @@ See [devcontainer json file](https://code.visualstudio.com/docs/remote/container
 
 - See coverage inside code.
    
-- Install more extensions inside container, like [Live Share](https://visualstudio.microsoft.com/services/live-share/).
+- Install more extensions inside container.
 
 ## Notes
 
-- Your tox project is mounted at **/workspace** inside the container. By default is using **../tox** in your host machine. Path can be changed with [.env file](/.env) through **TOX_PROJECT_DIR**
+- Your tox project is mounted at **/workspace** inside the container. By default is using **../tox** in your host machine. Path can be changed with **TOX_PROJECT_DIR** decalred in [.env file](/.env). 
 
-- If your host machine is **Linux** you'll probably hit some permissions problems with your workspace. See [.env file](/.env) and set UID with the id of your host user.
+- If your host machine is **Linux** you'll probably hit some permissions problems with your workspace. See [.env file](/.env) and set UID with your user's id (**id -u**) in your host machine and *>Remote-Containers: Rebuild Container* 
 
-- Tox environments are generated inside the container **~/.tox** so they are installed and running faster not polluting the **.tox** folder in your workspace.
+- Tox environments are generated inside the container **--workdir ~/.tox**. In this way your **/workspace** won't be polluted with a **.tox** folder inside.
 
-- Run **pytest in parallel inside VSCode** (**disabled by default**) is not compatible with debugging. If you want to enable it see commented [settings.vscode.json](/settings.vscode.json).
+- Run **pytest in parallel inside VSCode** (**disabled by default**) is not compatible with debugging. If you want to enable it see commented [settings.vscode.json](/settings.vscode.json) and after changes *>Remote-Containers: Rebuild Container*
 
 ## VSCode extensions installed in container
 - [ms-python.python](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
