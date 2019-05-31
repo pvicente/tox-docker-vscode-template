@@ -6,7 +6,7 @@ If your IDE for python project is **VSCode** and your project is using tox this 
 
 It setups a development container (based on **Ubuntu 18.04**) with the essential tools to run your **CI environments** inside the container with **VSCode**. A development environment is set up to work in **VSCode** to run/debug your code and tests. You can also run other CI environments and use them inside VSCode.
 
->This setup works with [tox](https://github.com/tox-dev/tox) project cloned in the parent folder (**../tox** relative to this project) but it can be a template for any other project using **tox** as automation tool for **CI** or **development environments**.
+This setup works with [tox](https://github.com/tox-dev/tox) project as an example, cloned in the parent folder (**../tox** relative to this project) but it can be a template for any other project using **tox** as automation tool for **CI** or **development environments**.
 
 ## Use cases:
 
@@ -16,6 +16,7 @@ It setups a development container (based on **Ubuntu 18.04**) with the essential
 
 ## Requirements:
 
+- Your tox based project (*i.e [tox](https://github.com/tox-dev/tox)*) cloned in parent folder of this repo (**../tox** by default).
 - [Docker](https://docs.docker.com/install/#supported-platforms)
 - [Visual Studio Code Insiders v1.34.0](https://code.visualstudio.com/insiders/)
 - [Remote Development Extension for VScode](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack)
@@ -33,6 +34,8 @@ After the extension is installed press F1 (Command Palette) ">Reload Window", VS
 - [.devcontainer.json](/.devcontainer.json) with extensions needed for VSCode in the container and some configuration to work with Docker/Docker-compose.
 
 - [settings.vscode.json](/settings.vscode.json) settings for vscode in remote container to use the development environment and configure python interpreters inside container.
+
+- [create_dev_env.bash](/create_dev_env.bash) script to generate development environment.
 
 See [devcontainer json file](https://code.visualstudio.com/docs/remote/containers#_creating-a-devcontainerjson-file) to get more information about this setup or [container advanced](https://code.visualstudio.com/docs/remote/containers-advanced) if you need a diferent setup.
 
