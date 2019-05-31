@@ -66,5 +66,5 @@ See [devcontainer json file](https://code.visualstudio.com/docs/remote/container
 - [eamodio.gitlens](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens)
 - [bungcip.better-toml](https://marketplace.visualstudio.com/items?itemName=bungcip.better-toml)
 - [ryanluker.vscode-coverage-gutters](https://marketplace.visualstudio.com/items?itemName=ryanluker.vscode-coverage-gutters)
-- [mutantdino.resourcemonitor](https://marketplace.visualstudio.com/items?itemName=mutantdino.resourcemonitor),
+- [mutantdino.resourcemonitor](https://marketplace.visualstudio.com/items?itemName=mutantdino.resourcemonitor)
 
