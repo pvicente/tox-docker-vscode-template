@@ -6,10 +6,7 @@
     "workspaceFolder": "/workspace",
     "extensions": [
         "ms-python.python",
-        "eamodio.gitlens",
-        "bungcip.better-toml",
         "ryanluker.vscode-coverage-gutters",
-        "mutantdino.resourcemonitor",
     ],
 
     // Uncomment the next line if you want to publish any ports.
