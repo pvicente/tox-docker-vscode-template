@@ -3,11 +3,9 @@
     "python.venvPath": "~/.tox",
     "python.jediEnabled": true,
     "python.formatting.provider": "black",
-    "python.testing.pyTestEnabled": true,
-    // To change python.testing.pyTestArgs go to Command Palette -> Remote-Containers -> Settings -> Remote Tab -> Edit in settings.json
-    // or uncomment below line and rebuild container Command Palette -> Remote-Containers -> Rebuild Container
-    //"python.testing.pyTestArgs": ["-nauto"], //Uncomment it to run test in parallel (INCOMPATIBLE with debugging tests inside vscode)
-    //"python.testing.pyTestArgs": ["-nauto", "--cov", "tox", "--cov-config", "tox.ini", "--cov-report", "xml:cov.xml"], //Uncomment it to also generate cov report
+    "python.testing.pytestEnabled": true,
+    "python.testing.pytestArgs": ["-nauto"],
+    //"python.testing.pytestArgs": ["-nauto", "--cov", "tox", "--cov-config", "tox.ini", "--cov-report", "xml:cov.xml"], //Uncomment it to also generate cov report
     "python.linting.pylintEnabled": false,
     "python.linting.flake8Enabled": true
 }
